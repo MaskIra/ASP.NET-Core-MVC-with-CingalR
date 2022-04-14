@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebForUsers.Models.User>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-5">Welcome, @User.Identity.Name!</h1>
+
+    <h4>List of users:</h4>
+    <table id="users" class="table table-sm table-striped table-hover border-bottom">
+        <tr>
+            <td>ID</td>
+            <td>Email</td>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebForUsers.Models.Message>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Sender
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Topic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Received)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SenderUser.Email)
+                </td>
+                <td>
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#text_@item.Id">
+                                        @Html.DisplayFor(modelItem => item.Topic)
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="text_@item.Id" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    @Html.DisplayFor(modelItem => item.Text)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Received)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
